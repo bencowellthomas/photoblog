@@ -10,7 +10,7 @@ A Python package with various tools for downloading images from flickr and posti
 
 Usage:
 ------
-- Add your Wordpress address, username, post type and taxonomy etc in the constants.py file
+- Add your Wordpress address, username, post type and taxonomy etc in the userinfo.py file
 - Get an API key from Flickr [API key](http://www.flickr.com/services/api/misc.api_keys.html)
 - Fill in the taxonomy information (see below)
 - Import the `photoblog` package into Python
