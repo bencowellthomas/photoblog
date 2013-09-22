@@ -19,8 +19,4 @@ MOVIE_EXTENSIONS = ['.mov', '.MOV', '.thm', '.THM']
 RAW_EXTENSIONS = ['.cr2', '.CR2']
 IGNORE_FILES = ['.DS_Store']
 
-'''
-Wordpress information
-'''
-BLOGID = 1 # Currently ignored by XMLRPC API
 

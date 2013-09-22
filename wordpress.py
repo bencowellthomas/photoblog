@@ -11,8 +11,7 @@ import pyexiv2
 from datetime import datetime
 
 # Package imports
-import lib
-import constants
+import lib, constants, userinfo
 
 class Blogpost():
     '''
@@ -28,7 +27,7 @@ class Blogpost():
         if self.post_date == None:
             self.post_date = self.get_date_from_folder()
         self.terms = {}
-        for each_taxonomy in constants.CUSTOM_TAXONOMYS:
+        for each_taxonomy in userinfo.CUSTOM_TAXONOMYS:
             self.terms[each_taxonomy['taxonomy']] = self.get_metadata_from_file(each_taxonomy)
         
     def get_clean_title(self):
@@ -105,7 +104,7 @@ def post(source_folder,  subfolders=True, debug=False):
         
         # Upload images to blog
         if (images != None):
-            print 'INFO: Posting to: ' + constants.URL
+            print 'INFO: Posting to: ' + userinfo.URL
             counter = 0
             if not debug:
                 for each_image in images:

@@ -14,8 +14,8 @@ import flickrapi
 import urllib
 
 # Package imports
-import lib
-import constants
+import lib, constants, userinfo
+
 
 class Flickr_photo():
     '''
@@ -37,15 +37,15 @@ class Flickr_photo():
         '''
         Returns the original secret value
         '''
-        flickr = flickrapi.FlickrAPI(constants.FLICKR_API_KEY, constants.FLICKR_API_SECRET)
-        photo_xml = flickr.photos_getInfo(api_key = constants.FLICKR_API_KEY, photo_id = self.id)
+        flickr = flickrapi.FlickrAPI(userinfo.FLICKR_API_KEY, userinfo.FLICKR_API_SECRET)
+        photo_xml = flickr.photos_getInfo(api_key = userinfo.FLICKR_API_KEY, photo_id = self.id)
         
         # Get Original Secret
         for child in photo_xml:
             self.orig_secret = child.get('originalsecret')
         
         # Get metadata
-        for each_taxonomy in constants.CUSTOM_TAXONOMYS:
+        for each_taxonomy in userinfo.CUSTOM_TAXONOMYS:
             if each_taxonomy['flickr'] != None:
                 self.meta_temp = {'metadata': each_taxonomy['metadata']}
                 self.raw_data = photo_xml.findall('.//' + each_taxonomy['flickr'])
@@ -71,7 +71,7 @@ def get_photos(download_folder, amount=0):
     '''
     # Authenticate the Flickr account  
     sys.stdout.write( 'INFO: Getting images from Flickr\n')
-    flickr = flickrapi.FlickrAPI(constants.FLICKR_API_KEY, constants.FLICKR_API_SECRET)
+    flickr = flickrapi.FlickrAPI(userinfo.FLICKR_API_KEY, userinfo.FLICKR_API_SECRET)
     (token, frob) = flickr.get_token_part_one(perms='read')
     if not token: 
         print 'A browser window will open to allow you to authorise this application.' 
@@ -79,7 +79,7 @@ def get_photos(download_folder, amount=0):
     flickr.get_token_part_two((token, frob))
     
     # Get the photos
-    photos = flickr.people_getPhotos(user_id = constants.FLICKR_ID)
+    photos = flickr.people_getPhotos(user_id = userinfo.FLICKR_ID)
     total_pages = int(photos.find('photos').attrib['pages'])
     total_number = int(photos.find('photos').attrib['total'])
     sys.stdout.write(  'INFO: Found ' +str(total_number) + ' photos, over ' + str(total_pages) + ' pages.\n')
@@ -93,7 +93,7 @@ def get_photos(download_folder, amount=0):
     sys.stdout.write('INFO: Collecting pages: ')
     while ((len(flickr_photos) < total_number) and (current_page <= total_pages)):
         current_page += 1
-        each_page = flickr.people_getPhotos(user_id = constants.FLICKR_ID, page = current_page)
+        each_page = flickr.people_getPhotos(user_id = userinfo.FLICKR_ID, page = current_page)
         photos = photos + (each_page.findall('.//photo'))
         sys.stdout.write('%0d.' %current_page)
         

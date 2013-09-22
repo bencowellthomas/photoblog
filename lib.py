@@ -13,8 +13,7 @@ import xmlrpclib
 import sys
 
 # Package imports
-import constants
-import wordpress
+import constants, wordpress, userinfo
 
 def set_metadata_in_file(filename, flickr_photo):
     '''
@@ -35,7 +34,7 @@ def check_wp_terms(server, term, taxonomy):
     Also adds new Terms to your wordpress taxonomy values if required
     '''
     # Get all the terms
-    terms_response = server.wp.getTerms(constants.BLOGID, constants.USERNAME, constants.PASSWORD, taxonomy)
+    terms_response = server.wp.getTerms(userinfo.BLOGID, userinfo.USERNAME, userinfo.PASSWORD, taxonomy)
     exists = False
     
     # cycle through all the terms and see if any match our term
@@ -50,7 +49,7 @@ def check_wp_terms(server, term, taxonomy):
         content = {'taxonomy': taxonomy, 'name': term}
         print 'INFO: Adding ' + taxonomy + ': ' + term
         wp_term = '---'
-        add_term_response = server.wp.newTerm(constants.BLOGID, constants.USERNAME, constants.PASSWORD, content)
+        add_term_response = server.wp.newTerm(userinfo.BLOGID, userinfo.USERNAME, userinfo.PASSWORD, content)
         wp_term = add_term_response
     return wp_term
     
@@ -128,7 +127,7 @@ def post_to_blog(image):
     with open(image.filepath, 'rb') as img:
         data['bits'] = xmlrpclib.Binary(img.read())
         pass
-    image_attachment = server.wp.uploadFile(constants.BLOGID, constants.USERNAME, constants.PASSWORD, data)
+    image_attachment = server.wp.uploadFile(userinfo.BLOGID, userinfo.USERNAME, userinfo.PASSWORD, data)
     
     # Create post_images content
     post_content = '<img src="' + image_attachment['url'] + '">'
@@ -147,7 +146,7 @@ def post_to_blog(image):
         wp_terms[each_taxonomy] = wp_term_ids
         
     # Prepare the content dictionary
-    content = { 'post_type' : constants.POST_TYPE,
+    content = { 'post_type' : userinfo.POST_TYPE,
                'post_status' : 'publish',
                'post_title' : image.post_title,
                 'post_date' : image.post_date,
@@ -156,7 +155,7 @@ def post_to_blog(image):
                 'post_thumbnail' : image_attachment['id'],
                 }
     print 'INFO: Creating blog post' 
-    post_id = server.wp.newPost(constants.BLOGID, constants.USERNAME, constants.PASSWORD, content)
+    post_id = server.wp.newPost(userinfo.BLOGID, userinfo.USERNAME, userinfo.PASSWORD, content)
     print 'INFO: Succcess, Post title: ' + image.post_title
 
 def get_from_folder(path, subfolders=True, debug=False):
