@@ -37,7 +37,7 @@ For example this is how [my photoblog](http://bct.me/photography/) is set up :
 
 Modules:
 --------
-1. flickr.download()
+1. flickr.download() 
 
 	Downloads all photographs from a particular Flickr user and embeds flickr meta into the file meta data
 	
