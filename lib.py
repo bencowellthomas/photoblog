@@ -119,7 +119,7 @@ def post_to_blog(image):
     '''
     Post via XML-RPC
     '''
-    server = xmlrpclib.ServerProxy(constants.URL)
+    server = xmlrpclib.ServerProxy(userinfo.URL)
     
     # Upload the image
     print 'INFO: Uploading: ' + image.filename

@@ -4,9 +4,9 @@ Photoblog
 A Python package with various tools for downloading images from flickr and posting them to a Photoblog running on Wordpress.
 
 - Author: Ben Cowell-Thomas
+- Contact: http://bct.me
 - Created: 18/08/2013
 - Updated: 20/09/2013
-- Contact: http://bct.me
 
 Usage:
 ------

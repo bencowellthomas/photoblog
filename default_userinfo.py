@@ -1,6 +1,8 @@
 '''
 photoblog_tools - usernames and API keys
 
+NOTE: Change this filename to userinfo.py before importing
+
 Created on Sept 21st, 2013
 @author: Ben Cowell-Thomas
 contact: http://bct.me
