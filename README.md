@@ -8,6 +8,11 @@ A Python package with various tools for downloading images from flickr and posti
 - Created: 18/08/2013
 - Updated: 20/09/2013
 
+Dependencies:
+-------------
+- The metadata functions require the [pyexiv2](http://tilloy.net/dev/pyexiv2/)  library for Python.
+- The flickr download function requires the [flickrapi by Sybren Stüvel](http://stuvel.eu/flickrapi) library for Python
+
 Usage:
 ------
 - Add your Wordpress address, username, post type and taxonomy etc in the userinfo.py file
@@ -84,11 +89,6 @@ Notes:
 ------
 - If you chose to first grab images from flickr then it'll first ask for your permission to authenticate (read only privs) with flickr
 - My images are organised into dated folders in the format YYYY_MM so if no date is found in the EXIF the folder name will be used as a fallback
-
-Dependencies:
--------------
-- The metadata functions require the [pyexiv2](http://tilloy.net/dev/pyexiv2/)  library for Python.
-- The flickr download function requires the [flickrapi by Sybren Stüvel](http://stuvel.eu/flickrapi) library for Python
 
 Todo:
 -----
