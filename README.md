@@ -29,7 +29,7 @@ For example if you'd like flickr 'tags' to be stored in each jpeg file as IPTC '
     CUSTOM_TAXONOMYS = [{'name': 'label', 'taxonomy': 'labels', 'metadata': 'Iptc.Application2.Keywords', 'flickr': 'tag'}]
 
 You can add as many of these structs as you like. Add the value 'None' for the flickr keyword if you don't want to associate the taxonomy with flickr (currently there's only support for flickr tags)
-For example this is how my photoblog is set up :
+For example this is how [my photoblog](http://bct.me/photography/) is set up :
 
     CUSTOM_TAXONOMYS = [{'name': 'label', 'taxonomy': 'photo_label', 'metadata': 'Iptc.Application2.Keywords', 'flickr': 'tag'},
                        {'name': 'set', 'taxonomy': 'photo_set', 'metadata': 'Iptc.Application2.Caption', 'flickr': None },
