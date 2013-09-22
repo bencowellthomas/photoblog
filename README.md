@@ -10,7 +10,7 @@ A Python package with various tools for downloading images from flickr and posti
 
 Dependencies:
 -------------
-- The metadata functions require the [pyexiv2](http://tilloy.net/dev/pyexiv2/)  library for Python.
+- The metadata functions require the [pyexiv2](http://tilloy.net/dev/pyexiv2/)  library for Python. Some tips for compiling the library can be found [here](http://bct.me/tutorials/using-python-to-migrate-from-flickr-to-wordpress/#pyexiv2)
 - The flickr download function requires the [flickrapi by Sybren Stüvel](http://stuvel.eu/flickrapi) library for Python
 
 Usage:
