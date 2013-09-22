@@ -15,6 +15,7 @@ Dependencies:
 
 Usage:
 ------
+- Rename default_userinfo.py to userinfo.py
 - Add your Wordpress address, username, post type and taxonomy etc in the userinfo.py file
 - Get an API key from Flickr [API key](http://www.flickr.com/services/api/misc.api_keys.html)
 - Fill in the taxonomy information (see below)
@@ -22,7 +23,7 @@ Usage:
 
 Taxonomy information:
 ---------------------
-In the constants module you'll find a section for taxonomy information. This tells the module how the meta data between flickr, files and wordpress is related.
+In the userinfo module you'll find a section for taxonomy information. This tells the module how the meta data between flickr, files and wordpress is related.
 For example if you'd like flickr 'tags' to be stored in each jpeg file as IPTC 'keywords' and then posted via a custom taxonomy 'labels' you would add an array element like this:
 
     CUSTOM_TAXONOMYS = [{'name': 'label', 'taxonomy': 'labels', 'metadata': 'Iptc.Application2.Keywords', 'flickr': 'tag'}]
